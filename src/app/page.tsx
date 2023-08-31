@@ -1,9 +1,9 @@
-import prisma from "@/db"
 import Link from "next/link"
+import { getTodo } from '../../utils/dbHelp'
 
 export default async function Home() {
 
-  const todos = await prisma.todo.findMany()
+  const todos = await getTodo()
 
   return ( <>
 
@@ -13,7 +13,9 @@ export default async function Home() {
     </header>
       
     <ul className='pl-4'>
-
+      {todos.map(todo =>
+        <li key={todo.id}>{todo.title}</li>
+      )}
     </ul>
 
   </> )
