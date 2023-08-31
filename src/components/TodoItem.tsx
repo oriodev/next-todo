@@ -5,9 +5,10 @@ type TodoItemProps = {
   title: string,
   complete: boolean
   toggleTodo: (id: string, complete: boolean) => void
+  deleteTodo: (id: string) => void
 }
 
-export const TodoItem = ({ id, title, complete, toggleTodo }: TodoItemProps ) => {
+export const TodoItem = ({ id, title, complete, toggleTodo, deleteTodo }: TodoItemProps ) => {
   return <li className='flex gap-1 items-center'>
     <input 
       id={id} 
@@ -19,7 +20,11 @@ export const TodoItem = ({ id, title, complete, toggleTodo }: TodoItemProps ) =>
 
     <label htmlFor={id} className='peer-checked:line-through cursor-pointer peer-checked:text-stone-700 select-none p-1 text-1xl'>{title}</label>
 
-    <button>X</button>
+    {/* creates delete button */}
+    <button 
+          type='button'
+          onClick={() => deleteTodo(id)}
+    >X</button>
 
   </li>
 }

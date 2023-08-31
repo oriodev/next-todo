@@ -25,4 +25,10 @@ const createTodo = async (data: FormData) => {
   
 } 
 
-export { getTodo, toggleTodo, createTodo }
+const deleteTodo = async (id: string) => {
+  'use server'
+
+  await prisma.todo.delete({ where: { id }})
+}
+
+export { getTodo, toggleTodo, createTodo, deleteTodo }
