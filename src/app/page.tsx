@@ -1,8 +1,9 @@
 import Link from "next/link"
-import { getTodo } from '../../utils/dbHelp'
+import { getTodo, toggleTodo } from '../utils/dbHelp'
+import { TodoItem } from '@/components/TodoItem'
 
 export default async function Home() {
-
+  
   const todos = await getTodo()
 
   return ( <>
@@ -14,7 +15,7 @@ export default async function Home() {
       
     <ul className='pl-4'>
       {todos.map(todo =>
-        <li key={todo.id}>{todo.title}</li>
+        <TodoItem key={todo.id} { ...todo } toggleTodo={toggleTodo} />
       )}
     </ul>
 
