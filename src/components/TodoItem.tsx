@@ -17,6 +17,9 @@ export const TodoItem = ({ id, title, complete, toggleTodo }: TodoItemProps ) =>
       onChange={e => toggleTodo(id, e.target.checked)}
     />
 
-    <label htmlFor={id} className='peer-checked:line-through cursor-pointer peer-checked:text-stone-700'>{title}</label>
+    <label htmlFor={id} className='peer-checked:line-through cursor-pointer peer-checked:text-stone-700 select-none p-1 text-1xl'>{title}</label>
+
+    <button>X</button>
+
   </li>
 }
